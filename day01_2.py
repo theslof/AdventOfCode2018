@@ -1,12 +1,12 @@
-data = [int(x.replace('+', '')) for x in open("day01.in", 'r')]
-freqs = set()
-freq = 0
-freqs.add(freq)
+from itertools import cycle
 
-while True:
-    for x in data:
-        freq += x
-        if freq in freqs:
-            print(freq)
-            exit()
-        freqs.add(freq)
+data = map(int, open("day01.in", 'r').readlines())
+freq = 0
+freqs = {freq}
+
+for x in cycle(data):
+    freq += x
+    if freq in freqs:
+        break
+    freqs.add(freq)
+print(freq)
