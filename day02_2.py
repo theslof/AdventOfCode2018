@@ -1,11 +1,9 @@
-from difflib import ndiff
+from itertools import combinations
 
 data = [row.strip() for row in open("day02.in", 'r')]
 
-
-for i, word1 in enumerate(data):
-    for word2 in data[i+1:]:
-        diffs = [diff[-1] for diff in ndiff(word1, word2) if diff[0] == ' ']
-        if len(diffs) == len(word1) - 1:
-            print(''.join(diffs))
-            exit()
+for word1, word2 in combinations(data, 2):
+    common = [l1 for (l1, l2) in zip(word1, word2) if l1 == l2]
+    if len(common) == len(word1) - 1:
+        print(''.join(common))
+        break
