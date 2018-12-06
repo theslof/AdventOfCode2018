@@ -2,7 +2,6 @@ from collections import defaultdict
 
 input_gen = [row.rstrip() for row in open("day04.in", 'r') if row != '\n']
 input_gen.sort()
-# [1518-11-05 00:03] Guard #99 begins shift
 data = [[date, int(time[3:]), action] for (date, time), action in ((row[6:17].split(), row[19:]) for row in input_gen)]
 
 active_guard = 0
